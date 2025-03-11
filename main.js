@@ -4,6 +4,10 @@ let playerChoiceNum;
 
 let playerChoice;
 
+let playerScore = 0;
+
+let botScore = 0;
+
 function getBotChoice() {
   let numChoice = Math.random();
 
@@ -19,81 +23,109 @@ function getBotChoice() {
   }
 }
 
-botChoice = getBotChoice();
-
-playerChoiceNum = prompt("Choose - 1 for Rock, 2 for Paper or 3 for Scissors");
-
-if (Number(playerChoiceNum) == 1) {
-  playerChoice = "Rock";
-} else if (Number(playerChoiceNum) == 2) {
-  playerChoice = "Paper";
-} else {
-  playerChoice = "Scissors";
+function getPlayerChoice() {
+  return prompt("Choose - 1 for Rock, 2 for Paper or 3 for Scissors");
 }
 
-if (botChoice == playerChoice) {
-  console.log(
-    "Bot chose - " +
-      botChoice +
-      " , and the player chose - " +
-      playerChoice +
-      " !"
-  );
-  console.log("Draw!");
-} else if (botChoice == "Rock" && playerChoice == "Scissors") {
-  console.log(
-    "Bot chose - " +
-      botChoice +
-      " , and the player chose - " +
-      playerChoice +
-      " !"
-  );
-  console.log("Bot wins!");
-} else if (botChoice == "Paper" && playerChoice == "Rock") {
-  console.log(
-    "Bot chose - " +
-      botChoice +
-      " , and the player chose - " +
-      playerChoice +
-      " !"
-  );
-  console.log("Bot wins!");
-} else if (botChoice == "Scissors" && playerChoice == "Paper") {
-  console.log(
-    "Bot chose - " +
-      botChoice +
-      " , and the player chose - " +
-      playerChoice +
-      " !"
-  );
-  console.log("Bot wins!");
-} else if (botChoice == "Rock" && playerChoice == "Paper") {
-  console.log(
-    "Bot chose - " +
-      botChoice +
-      " , and the player chose - " +
-      playerChoice +
-      " !"
-  );
-  console.log("Player wins!");
-} else if (botChoice == "Scissors" && playerChoice == "Rock") {
-  console.log(
-    "Bot chose - " +
-      botChoice +
-      " , and the player chose - " +
-      playerChoice +
-      " !"
-  );
-  console.log("Player wins!");
-} else if (botChoice == "Paper" && playerChoice == "Scissors") {
-  console.log(
-    "Bot chose - " +
-      botChoice +
-      " , and the player chose - " +
-      playerChoice +
-      " !"
-  );
-  console.log("Player wins!");
-} else {
-  console.log("WHat even happened!");
+function playRound(playerChoiceNum, botChoice) {
+  let playerChoice;
+
+  if (Number(playerChoiceNum) == 1) {
+    playerChoice = "Rock";
+  } else if (Number(playerChoiceNum) == 2) {
+    playerChoice = "Paper";
+  } else {
+    2;
+    playerChoice = "Scissors";
+  }
+
+  if (botChoice == playerChoice) {
+    console.log(
+      "Bot chose - " +
+        botChoice +
+        " , and the player chose - " +
+        playerChoice +
+        " !"
+    );
+    console.log("Draw!");
+    playerScore++;
+    botScore++;
+  } else if (botChoice == "Rock" && playerChoice == "Scissors") {
+    console.log(
+      "Bot chose - " +
+        botChoice +
+        " , and the player chose - " +
+        playerChoice +
+        " !"
+    );
+    console.log("Bot wins!");
+    botScore++;
+  } else if (botChoice == "Paper" && playerChoice == "Rock") {
+    console.log(
+      "Bot chose - " +
+        botChoice +
+        " , and the player chose - " +
+        playerChoice +
+        " !"
+    );
+    console.log("Bot wins!");
+    botScore++;
+  } else if (botChoice == "Scissors" && playerChoice == "Paper") {
+    console.log(
+      "Bot chose - " +
+        botChoice +
+        " , and the player chose - " +
+        playerChoice +
+        " !"
+    );
+    console.log("Bot wins!");
+    botScore++;
+  } else if (botChoice == "Rock" && playerChoice == "Paper") {
+    console.log(
+      "Bot chose - " +
+        botChoice +
+        " , and the player chose - " +
+        playerChoice +
+        " !"
+    );
+    console.log("Player wins!");
+    playerScore++;
+  } else if (botChoice == "Scissors" && playerChoice == "Rock") {
+    console.log(
+      "Bot chose - " +
+        botChoice +
+        " , and the player chose - " +
+        playerChoice +
+        " !"
+    );
+    console.log("Player wins!");
+    playerScore++;
+  } else if (botChoice == "Paper" && playerChoice == "Scissors") {
+    console.log(
+      "Bot chose - " +
+        botChoice +
+        " , and the player chose - " +
+        playerChoice +
+        " !"
+    );
+    console.log("Player wins!");
+    playerScore++;
+  } else {
+    console.log("WHat even happened!");
+  }
 }
+
+function playGame() {
+  playRound(getPlayerChoice(), getBotChoice());
+  playRound(getPlayerChoice(), getBotChoice());
+  playRound(getPlayerChoice(), getBotChoice());
+  playRound(getPlayerChoice(), getBotChoice());
+  playRound(getPlayerChoice(), getBotChoice());
+  if (playerScore > botScore) {
+    console.log("Player wins the whole damn thing!");
+  } else {
+    console.log("Computer wins the whole damn thing!");
+  }
+}
+
+playGame();
